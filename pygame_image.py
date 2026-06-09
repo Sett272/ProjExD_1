@@ -12,13 +12,15 @@ def main():
     bg_img = pg.image.load("fig/pg_bg.jpg")
     koukaton = pg.image.load("fig/3.png") # 3こうかとん読み込み
     kk = pg.transform.flip(koukaton, True, False)
+    bg_flip = pg.transform.flip(bg_img, True, False)
     tmr = 0
     while True:
         for event in pg.event.get():
             if event.type == pg.QUIT: return
-
-        x = tmr
-        screen.blit(bg_img, [-x, 0]) #5
+        x = tmr%3200
+        screen.blit(bg_img, [-x, 0]) #5 右に移動
+        screen.blit(bg_flip, [-x+1600, 0]) #7 画像延長#8 画像反転
+        screen.blit(bg_img, [-x+3199, 0]) #9 画像反転
         screen.blit(kk, [300,200]) #4こうかとんsurfaceに貼り付け
         pg.display.update()
         tmr += 1        
